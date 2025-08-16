@@ -1270,7 +1270,7 @@
             animateCalculator();
         };
 
- // --- AI Project Estimator Logic ---
+// --- AI Project Estimator Logic ---
 const initAIEstimator = () => {
     const userInput = document.getElementById('userInput');
     const sendBtn = document.getElementById('sendBtn');
@@ -1313,8 +1313,8 @@ const initAIEstimator = () => {
         chatWindow.scrollTop = chatWindow.scrollHeight;
 
         try {
-            // Corrected Fetch call to your local backend server
-            const response = await fetch('http://localhost:3000/api/estimator', {
+            // Corrected Fetch call to your deployed Render backend
+            const response = await fetch('https://digital-fusion-studios.onrender.com/api/estimator', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ chatHistory: chatHistory })
@@ -1386,3 +1386,4 @@ window.onload = function() {
     </script>
 </body>
 </html>
+
