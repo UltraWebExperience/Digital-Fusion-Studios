@@ -5,7 +5,7 @@ const app = express();
 const port = 3000;
 
 // Your Gemini API key
-const API_KEY = "AIzaSyBcp7v9UvU7iLcPPNQuHzs7vnqHbQ6cmc4"; 
+const API_KEY = process.env.API_KEY;
 
 const genAI = new GoogleGenerativeAI(API_KEY);
 
@@ -59,4 +59,5 @@ app.post('/api/estimator', async (req, res) => {
 
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
+
 });
