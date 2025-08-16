@@ -1,13 +1,18 @@
 
 const express = require('express');
 const cors = require('cors');
-const path = require('path');
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
-// Your Gemini API key
+// Your Gemini API key is now configured to be read securely from Render's environment
 const API_KEY = process.env.API_KEY; 
+
+// This check is crucial for a successful deployment
+if (!API_KEY) {
+    console.error("API_KEY environment variable is not set. The server cannot connect to the Gemini API.");
+    // In production, you might want to return an error page. For now, let the server start.
+}
 
 const genAI = new GoogleGenerativeAI(API_KEY);
 
@@ -17,7 +22,7 @@ app.use(cors());
 // Middleware to parse JSON bodies
 app.use(express.json());
 
-// Serve static files from the same directory as the server.js file
+// Serve static files from the root of the project
 app.use(express.static(__dirname));
 
 // This is your AI Estimator route
