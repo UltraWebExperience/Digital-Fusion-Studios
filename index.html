@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Fusion Studios - Your Digital Partner</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2A61FF; /* Bright Blue */
+            --secondary-color: #8A2BE2; /* Amethyst */
+            --accent-color: #FF2A6D; /* Vibrant Pink */
+
+            /* Dark Theme Colors */
+            --header-bg-color-dark: #121212;
+            --body-bg-color-dark: #0a0a0a;
+            --card-bg-color-dark: #1f1f1f;
+            --text-color-dark: #e0e0e0;
+            --glass-bg-dark: rgba(255, 255, 255, 0.05);
+            --glass-border-dark: rgba(255, 255, 255, 0.1);
+            --chat-bg-dark: #1f1f1f;
+            --chat-border-dark: #4a4a4a; /* Border for chat window */
+
+            /* Light Theme Colors */
+            --header-bg-color-light: #ffffff;
+            --body-bg-color-light: #f4f4f9; /* Soft off-white */
+            --card-bg-color-light: #e9ecef; /* Lighter grey for cards */
+            --text-color-light: #333333; /* Dark grey for readability */
+            --glass-bg-light: rgba(255, 255, 255, 0.7);
+            --glass-border-light: rgba(0, 0, 0, 0.1);
+            --chat-bg-light: #e0e0e0; /* Chat background in light mode */
+            --chat-border-light: #bbbbbb; /* Chat border in light mode */
+
+            --link-hover-color: #0056b3;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        html[data-theme='dark'] {
+            background-color: var(--body-bg-color-dark);
+            color: var(--text-color-dark);
+        }
+
+        /* FIXED: Adjusted light mode background and text colors for better readability and matching */
+        html[data-theme='light'] {
+            background-color: var(--body-bg-color-light);
+            color: var(--text-color-light); /* Default text color for light mode */
+        }
+
+        /* FIXED: Ensures all text elements inherit the proper light mode color */
+        html[data-theme='light'] h1,
+        html[data-theme='light'] h2,
+        html[data-theme='light'] h3,
+        html[data-theme='light'] p,
+        html[data-theme='light'] span,
+        html[data-theme='light'] a,
+        html[data-theme='light'] .text-color {
+            color: var(--text-color-light) !important;
+        }
+
+        /* Utility classes */
+        .primary-btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        .primary-btn:hover {
+            background-color: var(--link-hover-color);
+        }
+
+        .text-color {
+            color: var(--text-color-dark); /* Default to dark theme text color */
+        }
+
+        html[data-theme='light'] .text-color {
+            color: var(--text-color-light) !important; /* Override for light theme */
+        }
+
+        /* Neo-brutalism button */
+        .neo-brutal-btn {
+            display: inline-block;
+            font-size: 1rem;
+            font-weight: 700;
+            text-align: center;
+            border: 2px solid #000;
+            box-shadow: 4px 4px 0px #000;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0.75rem 1.5rem;
+            background-color: #fff;
+            color: #000;
+        }
+        
+        .neo-brutal-btn.primary {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: #1a42a0;
+            box-shadow: 4px 4px 0px #1a42a0;
+        }
+
+        .neo-brutal-btn.secondary {
+            background-color: var(--secondary-color);
+            color: white;
+            border-color: #5a1d95;
+            box-shadow: 4px 4px 0px #5a1d95;
+        }
+
+        .neo-brutal-btn:hover {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px #000;
+        }
+        
+        .neo-brutal-btn.primary:hover {
+            box-shadow: 2px 2px 0px #1a42a0;
+        }
+        
+        .neo-brutal-btn.secondary:hover {
+            box-shadow: 2px 2px 0px #5a1d95;
+        }
+
+        /* Hero Section */
+        #hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            background: var(--body-bg-color-dark); /* Default to dark background */
+        }
+
+        html[data-theme='light'] #hero {
+            background: var(--body-bg-color-light); /* Adjust for light mode */
+        }
+
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+            opacity: 0.3;
+            z-index: 1;
+            filter: blur(100px);
+        }
+
+        #hero-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        #three-canvas-header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+        }
+
+        /* Gradient Text */
+        .gradient-text {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gradient-icon {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        /* Glassmorphism Card */
+        .glass-card {
+            backdrop-filter: blur(10px);
+            background-color: var(--glass-bg-dark); /* Default to dark theme glass */
+            border: 1px solid var(--glass-border-dark); /* Default to dark theme border */
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* FIXED: Glass card appearance in light mode */
+        html[data-theme='light'] .glass-card {
+            background-color: var(--glass-bg-light);
+            border: 1px solid var(--glass-border-light);
+        }
+
+        /* Typewriter Animation */
+        #typewriter::after {
+            content: '|';
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        /* Swiper overrides */
+        .swiper-button-next, .swiper-button-prev {
+            color: var(--text-color-dark) !important; /* Ensure visibility */
+            --swiper-navigation-size: 24px;
+        }
+        html[data-theme='light'] .swiper-button-next,
+        html[data-theme='light'] .swiper-button-prev {
+            color: var(--text-color-light) !important;
+        }
+
+        .swiper-pagination-bullet {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        html[data-theme='light'] .swiper-pagination-bullet {
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        .swiper-pagination-bullet-active {
+            background-color: #fff;
+        }
+        html[data-theme='light'] .swiper-pagination-bullet-active {
+            background-color: var(--text-color-light);
+        }
+
+
+        /* Custom Scrollbar for chat window */
+        .chat-window-container::-webkit-scrollbar {
+            width: 8px;
+        }
+        .chat-window-container::-webkit-scrollbar-track {
+            background: var(--chat-border-dark);
+            border-radius: 10px;
+        }
+        .chat-window-container::-webkit-scrollbar-thumb {
+            background: var(--chat-border-dark);
+            border-radius: 10px;
+        }
+
+        html[data-theme='light'] .chat-window-container::-webkit-scrollbar-track {
+            background: var(--chat-bg-light);
+        }
+        html[data-theme='light'] .chat-window-container::-webkit-scrollbar-thumb {
+            background: var(--chat-border-light);
+        }
+
+        /* AI Estimator Chat Styles */
+        .ai-message {
+            background-color: var(--chat-bg-dark); /* Dark theme */
+            border-radius: 10px 10px 10px 0;
+            padding: 10px;
+            margin-bottom: 10px;
+            max-width: 80%;
+            align-self: flex-start;
+            color: var(--text-color-dark);
+        }
+        
+        .user-message {
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 10px 10px 0 10px;
+            padding: 10px;
+            margin-bottom: 10px;
+            max-width: 80%;
+            align-self: flex-end;
+        }
+        
+        .loading-message {
+            background-color: var(--chat-bg-dark); /* Dark theme */
+            border-radius: 10px 10px 10px 0;
+            padding: 10px;
+            margin-bottom: 10px;
+            width: 60px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .loading-dots {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .loading-dot-item {
+            width: 8px;
+            height: 8px;
+            background-color: var(--text-color-dark); /* Dark theme */
+            border-radius: 50%;
+            margin: 0 3px;
+            animation: dot-flicker 1.4s infinite ease-in-out both;
+        }
+
+        .loading-dot-item:nth-child(1) { animation-delay: -0.32s; }
+        .loading-dot-item:nth-child(2) { animation-delay: -0.16s; }
+        .loading-dot-item:nth-child(3) { animation-delay: 0s; }
+
+        @keyframes dot-flicker {
+            0%, 80%, 100% {
+                transform: scale(0);
+            }
+            40% {
+                transform: scale(1);
+            }
+        }
+        
+        /* FIXED: Light mode styles for AI chat messages and loading indicator */
+        html[data-theme='light'] .ai-message {
+            background-color: var(--chat-bg-light);
+            color: var(--text-color-light);
+        }
+        html[data-theme='light'] .loading-message {
+            background-color: var(--chat-bg-light);
+        }
+        html[data-theme='light'] .loading-dot-item {
+            background-color: var(--text-color-light);
+        }
+        
+        #toast-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column-reverse;
+            gap: 10px;
+        }
+
+        /* Mobile Drawer transition */
+        .drawer {
+            transition: transform 0.3s ease-in-out;
+        }
+        .drawer-link:hover {
+            color: var(--primary-color);
+            transition: color 0.2s;
+        }
+
+        /* Custom Active Link Styling */
+        .nav-link.active {
+            color: var(--primary-color);
+            font-weight: bold;
+            border-bottom: 2px solid var(--primary-color);
+        }
+        .drawer-link.active {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Fixed input field colors for both themes */
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            background-color: var(--card-bg-color-dark); /* Default to dark theme */
+            color: var(--text-color-dark);
+            border: 1px solid var(--glass-border-dark);
+        }
+
+        html[data-theme='light'] input[type="text"],
+        html[data-theme='light'] input[type="email"],
+        html[data-theme='light'] textarea {
+            background-color: var(--card-bg-color-light);
+            color: var(--text-color-light);
+            border: 1px solid var(--glass-border-light);
+        }
+
+        input[type="text"]::placeholder,
+        input[type="email"]::placeholder,
+        textarea::placeholder {
+            color: rgba(var(--text-color-dark), 0.7); /* Adjust placeholder transparency */
+        }
+        html[data-theme='light'] input[type="text"]::placeholder,
+        html[data-theme='light'] input[type="email"]::placeholder,
+        html[data-theme='light'] textarea::placeholder {
+            color: rgba(var(--text-color-light), 0.7);
+        }
+
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'hero-bg': 'var(--body-bg-color-dark)',
+                        'gold': '#FFD700', /* Kept for legacy if still in use, but using CSS variables for theme now */
+                        'text-color': 'var(--text-color-dark)', /* Custom text-color utility */
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans antialiased text-text-color min-h-screen flex flex-col" style="background-color: var(--body-bg-color-dark);">
+
+    <div id="preloader" class="fixed inset-0 z-[9999] bg-gray-900 flex items-center justify-center transition-opacity duration-500 ease-in-out">
+        <div class="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gold"></div>
+    </div>
+
+    <header class="fixed top-0 left-0 w-full z-50 transition-colors duration-300" style="background-color: var(--header-bg-color-dark);">
+        <nav class="container mx-auto flex justify-between items-center py-4 px-4">
+            <a href="#" class="font-black text-3xl tracking-wider uppercase text-white">
+                Digital<span class="gradient-text">Fusion</span>
+            </a>
+            <div class="hidden md:flex space-x-8 items-center text-white font-medium">
+                <a href="#services" class="nav-link hover:text-gold transition-colors duration-200 text-color">Services</a>
+                <a href="#estimator" class="nav-link hover:text-gold transition-colors duration-200 text-color">Estimator</a>
+                <a href="#portfolio" class="nav-link hover:text-gold transition-colors duration-200 text-color">Portfolio</a>
+                <a href="#about" class="nav-link hover:text-gold transition-colors duration-200 text-color">About</a>
+                <a href="#faq" class="nav-link hover:text-gold transition-colors duration-200 text-color">FAQ</a>
+                <a href="#contact" class="nav-link hover:text-gold transition-colors duration-200 text-color">Contact</a>
+                <button id="themeToggle" class="text-white hover:text-gold transition-colors duration-200 focus:outline-none text-color">
+                    <i class="fas fa-sun text-xl"></i>
+                </button>
+            </div>
+            <div class="md:hidden flex items-center space-x-4">
+                <button id="themeToggleMobile" class="text-white hover:text-gold focus:outline-none text-color">
+                    <i class="fas fa-sun text-xl"></i>
+                </button>
+                <button id="menuBtn" class="text-white text-3xl focus:outline-none text-color">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <div id="mobileMenu" class="drawer fixed top-0 right-0 h-full w-64 bg-gray-900 text-white shadow-xl transform translate-x-full z-[80] p-6 flex flex-col transition-transform duration-300 ease-in-out" style="background-color: var(--header-bg-color-dark);">
+        <div class="flex justify-end mb-8">
+            <button id="closeMenu" class="text-white text-3xl focus:outline-none text-color">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <nav class="flex flex-col space-y-6 text-2xl font-bold">
+            <a href="#services" class="drawer-link hover:text-gold transition-colors duration-200 text-color">Services</a>
+            <a href="#estimator" class="drawer-link hover:text-gold transition-colors duration-200 text-color">Estimator</a>
+            <a href="#portfolio" class="drawer-link hover:text-gold transition-colors duration-200 text-color">Portfolio</a>
+            <a href="#about" class="drawer-link hover:text-gold transition-colors duration-200 text-color">About</a>
+            <a href="#faq" class="drawer-link hover:text-gold transition-colors duration-200 text-color">FAQ</a>
+            <a href="#contact" class="drawer-link hover:text-gold transition-colors duration-200 text-color">Contact</a>
+        </nav>
+    </div>
+
+    <div id="toast-container"></div>
+
+    <main>
+        <section id="hero" class="relative text-white flex items-center justify-center min-h-screen text-center">
+            <canvas id="three-canvas-header" class="absolute inset-0 z-10"></canvas>
+            <div id="hero-content" class="relative z-20 p-4">
+                <h1 class="text-6xl md:text-8xl font-bold mb-4 tracking-tight text-color" data-aos="fade-up">Digital<span class="gradient-text">Fusion</span> Studios</h1>
+                <h2 class="text-2xl md:text-3xl font-light h-10 mb-8 text-color" data-aos="fade-up" data-aos-delay="200">
+                    <span id="typewriter"></span>
+                </h2>
+                <div class="flex justify-center gap-6" data-aos="fade-up" data-aos-delay="400">
+                    <a href="#portfolio" class="neo-brutal-btn primary">Our Work</a>
+                    <a href="#contact" class="neo-brutal-btn secondary">Contact Us</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="container mx-auto py-24 px-4 text-center">
+            <h2 class="text-4xl font-bold text-white mb-16 gradient-text" data-aos="fade-up">Our Services</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="p-8 rounded-lg glass-card flex flex-col items-center" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="text-5xl gradient-icon mb-4">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-text-color mb-2">Web Development</h3>
+                    <p class="text-text-color">Crafting custom, responsive, and high-performance websites that captivate and convert.</p>
+                </div>
+                <div class="p-8 rounded-lg glass-card flex flex-col items-center" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="text-5xl gradient-icon mb-4">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-text-color mb-2">UI/UX Design</h3>
+                    <p class="text-text-color">Creating intuitive and visually stunning interfaces that provide a seamless user experience.</p>
+                </div>
+                <div class="p-8 rounded-lg glass-card flex flex-col items-center" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="text-5xl gradient-icon mb-4">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-text-color mb-2">Digital Marketing</h3>
+                    <p class="text-text-color">Driving traffic and growth with strategic SEO, content creation, and targeted campaigns.</p>
+                </div>
+                <div class="p-8 rounded-lg glass-card flex flex-col items-center" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="text-5xl gradient-icon mb-4">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-text-color mb-2">Mobile Apps</h3>
+                    <p class="text-text-color">Developing cross-platform mobile applications that extend your reach and engage your audience.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 px-4 text-center" style="background-color: var(--card-bg-color-dark);">
+            <div class="container mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <div class="p-6">
+                        <h3 class="text-5xl font-bold gradient-text counter" data-aos="fade-up" data-target="150">0</h3>
+                        <p class="text-text-color uppercase tracking-wider mt-2">Projects Completed</p>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-5xl font-bold gradient-text counter" data-aos="fade-up" data-aos-delay="100" data-target="98">0</h3>
+                        <p class="text-text-color uppercase tracking-wider mt-2">Satisfied Clients</p>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-5xl font-bold gradient-text counter" data-aos="fade-up" data-aos-delay="200" data-target="10">0</h3>
+                        <p class="text-text-color uppercase tracking-wider mt-2">Years of Experience</p>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-5xl font-bold gradient-text counter" data-aos="fade-up" data-aos-delay="300" data-target="24">0</h3>
+                        <p class="text-text-color uppercase tracking-wider mt-2">Team Members</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="estimator" class="container mx-auto py-24 px-4 relative overflow-hidden">
+            <h2 class="text-4xl font-bold text-white mb-16 text-center gradient-text" data-aos="fade-up">AI Project Estimator</h2>
+            <div class="max-w-4xl mx-auto rounded-lg glass-card p-6 md:p-12 relative flex z-20" data-aos="fade-up" data-aos-delay="100">
+                <canvas id="three-canvas-calculator" class="absolute inset-0 z-10"></canvas>
+                <div class="flex-1 p-4 md:p-8 relative z-20">
+                    <div id="chat-window" class="chat-window-container flex flex-col h-96 overflow-y-auto p-4 rounded-lg bg-gray-900 border border-gray-700 mb-4" style="background-color: var(--chat-bg-dark); border-color: var(--chat-border-dark);">
+                        </div>
+                    <div class="flex">
+                        <input type="text" id="userInput" placeholder="e.g., 'I need a portfolio website with a blog.'" class="flex-1 p-3 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-gold" style="background-color: var(--card-bg-color-dark); color: var(--text-color-dark);">
+                        <button id="sendBtn" class="p-3 bg-gold text-black rounded-r-lg font-bold hover:bg-yellow-400 transition-colors duration-200">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio" class="container mx-auto py-24 px-4 text-center">
+            <h2 class="text-4xl font-bold text-white mb-16 gradient-text" data-aos="fade-up">Our Portfolio</h2>
+            <div class="flex justify-center mb-12 space-x-4 flex-wrap">
+                <button class="filter-btn text-white font-medium hover:text-gold transition-colors duration-200 text-lg text-color" data-filter="all">All</button>
+                <button class="filter-btn text-white font-medium hover:text-gold transition-colors duration-200 text-lg text-color" data-filter="web-dev">Web Development</button>
+                <button class="filter-btn text-white font-medium hover:text-gold transition-colors duration-200 text-lg text-color" data-filter="ui-ux">UI/UX Design</button>
+                <button class="filter-btn text-white font-medium hover:text-gold transition-colors duration-200 text-lg text-color" data-filter="branding">Branding</button>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="portfolio-item web-dev relative overflow-hidden rounded-lg group" data-aos="fade-up" data-aos-delay="100">
+                   <img src="images/portfolio/project-alpha.jpg" alt="Project Alpha" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black bg-opacity-70 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <h4 class="text-2xl font-bold text-white">Project Alpha</h4>
+                        <p class="text-gold mt-2">Web Development</p>
+                    </div>
+                </div>
+                <div class="portfolio-item ui-ux relative overflow-hidden rounded-lg group" data-aos="fade-up" data-aos-delay="200">
+                    <img src="images/portfolio/project-beta.jpg"alt="Project Beta" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black bg-opacity-70 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <h4 class="text-2xl font-bold text-white">Project Beta</h4>
+                        <p class="text-gold mt-2">UI/UX Design</p>
+                    </div>
+                </div>
+                <div class="portfolio-item branding relative overflow-hidden rounded-lg group" data-aos="fade-up" data-aos-delay="300">
+                    <img src="images/portfolio/project-gamma.jpg"alt="Project Gamma" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black bg-opacity-70 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <h4 class="text-2xl font-bold text-white">Project Gamma</h4>
+                        <p class="text-gold mt-2">Branding</p>
+                    </div>
+                </div>
+                <div class="portfolio-item web-dev ui-ux relative overflow-hidden rounded-lg group" data-aos="fade-up" data-aos-delay="100">
+                    <img src="images/portfolio/project-delta.jpg"alt="Project Delta" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black bg-opacity-70 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <h4 class="text-2xl font-bold text-white">Project Delta</h4>
+                        <p class="text-gold mt-2">Web Dev & UI/UX</p>
+                    </div>
+                </div>
+                <div class="portfolio-item branding relative overflow-hidden rounded-lg group" data-aos="fade-up" data-aos-delay="200">
+                    <img src="images/portfolio/project-epsilon.jpg"alt="Project Epsilon" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black bg-opacity-70 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <h4 class="text-2xl font-bold text-white">Project Epsilon</h4>
+                        <p class="text-gold mt-2">Branding</p>
+                    </div>
+                </div>
+                <div class="portfolio-item web-dev relative overflow-hidden rounded-lg group" data-aos="fade-up" data-aos-delay="300">
+                    <img src="images/portfolio/project-zeta.jpg"alt="Project Zeta" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black bg-opacity-70 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <h4 class="text-2xl font-bold text-white">Project Zeta</h4>
+                        <p class="text-gold mt-2">Web Development</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="testimonials" class="py-24 px-4" style="background-color: var(--card-bg-color-dark);">
+            <h2 class="text-4xl font-bold text-white mb-16 text-center gradient-text" data-aos="fade-up">What Our Clients Say</h2>
+            <div class="container mx-auto max-w-3xl" data-aos="fade-up" data-aos-delay="100">
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide p-8 rounded-lg glass-card flex flex-col items-center text-center">
+                            <img src="images/clients/jane-doe.jpg" onerror="this.onerror=null;this.src='https://placehold.co/100x100/2A61FF/FFFFFF?text=Client+A';" alt="Client 1" class="rounded-full w-24 h-24 mb-4 object-cover">
+                            <p class="text-lg text-text-color italic mb-4">"Digital Fusion Studios completely transformed our online presence. The new website is not only beautiful but incredibly fast and easy to use. Highly recommended!"</p>
+                            <h4 class="text-xl font-bold text-text-color">- Jane Doe, CEO of TechCorp</h4>
+                        </div>
+                        <div class="swiper-slide p-8 rounded-lg glass-card flex flex-col items-center text-center">
+                            <img src="images/clients/marcus-ray.jpg"this.onerror=null;this.src='https://placehold.co/100x100/8A2BE2/FFFFFF?text=Client+B';" alt="Client 2" class="rounded-full w-24 h-24 mb-4 object-cover">
+                            <p class="text-lg text-text-color italic mb-4">"The team at Digital Fusion Studios is a pleasure to work with. They listened to our needs and delivered a branding package that perfectly captured our vision."</p>
+                            <h4 class="text-xl font-bold text-text-color">- Marcus Ray, Founder of BrandWave</h4>
+                        </div>
+                        <div class="swiper-slide p-8 rounded-lg glass-card flex flex-col items-center text-center">
+                            <img src= "images/clients/emily-chen.jpg"onerror="this.onerror=null;this.src='https://placehold.co/100x100/FF2A6D/FFFFFF?text=Client+C';" alt="Client 3" class="rounded-full w-24 h-24 mb-4 object-cover">
+                            <p class="text-lg text-text-color italic mb-4">"Their web development skills are top-notch. They built a custom e-commerce solution for us that has significantly boosted our sales. A fantastic partnership!"</p>
+                            <h4 class="text-xl font-bold text-text-color">- Emily Chen, Director of E-Sales</h4>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-next text-white"></div>
+                    <div class="swiper-button-prev text-white"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="container mx-auto py-24 px-4 text-center">
+            <h2 class="text-4xl font-bold text-white mb-16 gradient-text" data-aos="fade-up">About Digital Fusion Studios</h2>
+            <div class="max-w-4xl mx-auto p-8 rounded-lg glass-card" data-aos="fade-up" data-aos-delay="100">
+                <p class="text-lg text-text-color leading-relaxed mb-6" data-aos="fade-up" data-aos-delay="200">
+                    Digital Fusion Studios is a collective of passionate innovators, dedicated to shaping the digital landscape with cutting-edge web solutions. With over a decade of combined experience, we specialize in transforming visionary ideas into tangible, high-impact digital products. Our expertise spans responsive web development, intuitive UI/UX design, powerful branding, and strategic digital marketing.
+                </p>
+                <p class="text-lg text-text-color leading-relaxed mb-6" data-aos="fade-up" data-aos-delay="300">
+                    We pride ourselves on a collaborative approach, working closely with clients to understand their unique challenges and aspirations. Our philosophy is simple: combine exceptional design with robust technology to create online experiences that are not only aesthetically pleasing but also highly functional, scalable, and tailored to drive measurable results. We are committed to pixel-perfect quality and a relentless pursuit of innovation in every project we undertake.
+                </p>
+                <div class="flex justify-center gap-4 text-text-color" data-aos="fade-up" data-aos-delay="400">
+                    <div class="text-2xl gradient-icon">🏆</div>
+                    <div class="text-2xl gradient-icon">✨</div>
+                    <div class="text-2xl gradient-icon">🚀</div>
+                </div>
+            </div>
+            <div class="mt-20">
+                <h3 class="text-3xl font-bold text-white mb-10 gradient-text" data-aos="fade-up">Our Core Values</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                    <div class="p-6 rounded-lg glass-card" data-aos="zoom-in" data-aos-delay="100">
+                        <i class="fas fa-lightbulb text-4xl gradient-icon mb-4"></i>
+                        <h4 class="text-xl font-bold text-text-color mb-2">Innovation</h4>
+                        <p class="text-text-color">Continuously exploring new technologies and creative approaches to deliver groundbreaking solutions.</p>
+                    </div>
+                    <div class="p-6 rounded-lg glass-card" data-aos="zoom-in" data-aos-delay="200">
+                        <i class="fas fa-handshake text-4xl gradient-icon mb-4"></i>
+                        <h4 class="text-xl font-bold text-text-color mb-2">Collaboration</h4>
+                        <p class="text-text-color">Building strong, transparent partnerships with clients through transparent and open communication.</p>
+                    </div>
+                    <div class="p-6 rounded-lg glass-card" data-aos="zoom-in" data-aos-delay="300">
+                        <i class="fas fa-cogs text-4xl gradient-icon mb-4"></i>
+                        <h4 class="text-xl font-bold text-text-color mb-2">Excellence</h4>
+                        <p class="text-text-color">Committing to the highest standards of quality, precision, and attention to detail in every aspect of our work.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-20">
+                <h3 class="text-3xl font-bold text-white mb-10 gradient-text" data-aos="fade-up">Why Choose Digital Fusion Studios?</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    <div class="p-6 rounded-lg glass-card text-left" data-aos="fade-right" data-aos-delay="100">
+                        <i class="fas fa-chart-line text-4xl gradient-icon mb-4"></i>
+                        <h4 class="text-xl font-bold text-text-color mb-2">Results-Driven Approach</h4>
+                        <p class="text-text-color">Our focus is not just on building beautiful websites, but on creating digital solutions that deliver tangible business results and ROI.</p>
+                    </div>
+                    <div class="p-6 rounded-lg glass-card text-left" data-aos="fade-left" data-aos-delay="200">
+                        <i class="fas fa-users text-4xl gradient-icon mb-4"></i>
+                        <h4 class="text-xl font-bold text-text-color mb-2">Expert Team</h4>
+                        <p class="text-text-color">Benefit from a multidisciplinary team of designers, developers, and strategists passionate about your success.</p>
+                    </div>
+                    <div class="p-6 rounded-lg glass-card text-left" data-aos="fade-right" data-aos-delay="300">
+                        <i class="fas fa-shield-alt text-4xl gradient-icon mb-4"></i>
+                        <h4 class="text-xl font-bold text-text-color mb-2">Future-Proof Solutions</h4>
+                        <p class="text-text-color">We build with scalability and maintainability in mind, ensuring your digital presence can grow with your business.</p>
+                    </div>
+                    <div class="p-6 rounded-lg glass-card text-left" data-aos="fade-left" data-aos-delay="400">
+                        <i class="fas fa-hand-holding-heart text-4xl gradient-icon mb-4"></i>
+                        <h4 class="text-xl font-bold text-text-color mb-2">Client-Centric Process</h4>
+                        <p class="text-text-color">Your satisfaction is our priority. We involve you at every step, ensuring clear communication and tailored solutions.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq" class="container mx-auto py-24 px-4">
+            <h2 class="text-4xl font-bold text-white mb-16 text-center gradient-text" data-aos="fade-up">Frequently Asked Questions</h2>
+            <div class="max-w-3xl mx-auto space-y-4">
+                <div class="rounded-lg p-6 glass-card" data-aos="fade-up">
+                    <div class="flex justify-between items-center cursor-pointer faq-toggle">
+                        <h4 class="text-xl font-bold text-text-color">What is your design process?</h4>
+                        <i class="fas fa-chevron-down transform transition-transform duration-300 text-text-color"></i>
+                    </div>
+                    <div class="faq-content hidden mt-4 text-text-color">
+                        <p>Our process typically starts with a comprehensive discovery phase to understand your unique needs and goals. This is followed by wireframing, design mockups, iterative development, and rigorous testing. We value client feedback at every stage to ensure the final product perfectly aligns with your vision.</p>
+                    </div>
+                </div>
+                <div class="rounded-lg p-6 glass-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex justify-between items-center cursor-pointer faq-toggle">
+                        <h4 class="text-xl font-bold text-text-color">How long does a typical project take?</h4>
+                        <i class="fas fa-chevron-down transform transition-transform duration-300 text-text-color"></i>
+                    </div>
+                    <div class="faq-content hidden mt-4 text-text-color">
+                        <p>Project timelines vary significantly based on scope and complexity. A simple informational website might take 4-6 weeks, while a complex e-commerce platform or custom application could take several months. After our initial consultation, we provide a detailed project roadmap with estimated timelines.</p>
+                    </div>
+                </div>
+                <div class="rounded-lg p-6 glass-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex justify-between items-center cursor-pointer faq-toggle">
+                        <h4 class="text-xl font-bold text-text-color">Do you offer ongoing support and maintenance?</h4>
+                        <i class="fas fa-chevron-down transform transition-transform duration-300 text-text-color"></i>
+                    </div>
+                    <div class="faq-content hidden mt-4 text-text-color">
+                        <p>Absolutely! We offer various post-launch support and maintenance packages to ensure your website or application remains secure, up-to-date, and performing optimally. This includes regular updates, security monitoring, bug fixes, and performance enhancements.</p>
+                    </div>
+                </div>
+                <div class="rounded-lg p-6 glass-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex justify-between items-center cursor-pointer faq-toggle">
+                        <h4 class="text-xl font-bold text-text-color">What is your pricing model?</h4>
+                        <i class="fas fa-chevron-down transform transition-transform duration-300 text-text-color"></i>
+                    </div>
+                    <div class="faq-content hidden mt-4 text-text-color">
+                        <p>Our pricing is project-based, tailored to the specific requirements and complexity of your project. We offer transparent pricing and detailed proposals after an initial consultation. For a quick estimate, try our AI Project Estimator on this page!</p>
+                    </div>
+                </div>
+                <div class="rounded-lg p-6 glass-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="flex justify-between items-center cursor-pointer faq-toggle">
+                        <h4 class="text-xl font-bold text-text-color">Can you help with content creation?</h4>
+                        <i class="fas fa-chevron-down transform transition-transform duration-300 text-text-color"></i>
+                    </div>
+                    <div class="faq-content hidden mt-4 text-text-color">
+                        <p>While our primary focus is design and development, we can connect you with trusted partners for high-quality content creation, including copywriting, photography, and video production, to ensure your website is fully equipped.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="container mx-auto py-24 px-4 text-center">
+            <h2 class="text-4xl font-bold text-white mb-16 gradient-text" data-aos="fade-up">Get in Touch</h2>
+            <div class="max-w-xl mx-auto p-8 rounded-lg glass-card" data-aos="fade-up" data-aos-delay="100">
+                <p class="text-lg text-text-color mb-8">Have a project in mind or just want to chat? We'd love to hear from you!</p>
+                <form id="contactForm" class="space-y-6">
+                    <div>
+                        <input type="text" id="name" placeholder="Your Name" class="w-full p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-gold" required>
+                    </div>
+                    <div>
+                        <input type="email" id="email" placeholder="Your Email" class="w-full p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-gold" required>
+                    </div>
+                    <div>
+                        <textarea id="message" placeholder="Your Message" rows="5" class="w-full p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-gold" required></textarea>
+                    </div>
+                    <button type="submit" class="neo-brutal-btn primary w-full">Send Message</button>
+                    <div id="formMessage" class="mt-4 text-sm font-semibold text-center text-text-color"></div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-12 px-4 text-center" style="background-color: var(--header-bg-color-dark);">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+                <a href="#" class="font-black text-3xl tracking-wider uppercase text-white">
+                    Digital<span class="gradient-text">Fusion</span>
+                </a>
+                <ul class="flex flex-wrap justify-center md:space-x-8 mt-4 md:mt-0 text-white font-medium">
+                    <li><a href="#services" class="hover:text-gold transition-colors duration-200 text-color">Services</a></li>
+                    <li><a href="#estimator" class="hover:text-gold transition-colors duration-200 text-color">Estimator</a></li>
+                    <li><a href="#portfolio" class="hover:text-gold transition-colors duration-200 text-color">Portfolio</a></li>
+                    <li><a href="#about" class="hover:text-gold transition-colors duration-200 text-color">About</a></li>
+                    <li><a href="#faq" class="hover:text-gold transition-colors duration-200 text-color">FAQ</a></li>
+                    <li><a href="#contact" class="hover:text-gold transition-colors duration-200 text-color">Contact</a></li>
+                </ul>
+            </div>
+            <p class="text-gray-500 text-sm mt-8 text-color">&copy; <span id="year"></span> Digital Fusion Studios. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // 🚨🚨🚨 YOUR Firebase Configuration IS NOW INSERTED HERE! 🚨🚨🚨
+        // This object comes directly from your Firebase project console.
+        let firebaseConfig = {
+            apiKey: "AIzaSyA52F0dF6l0O_tQ1w4OKRcH5EQRJoPhdBM",
+            authDomain: "ultrawebexperience-service.firebaseapp.com",
+            projectId: "ultrawebexperience-service",
+            storageBucket: "ultrawebexperience-service.firebasestorage.app",
+            messagingSenderId: "248605767535",
+            appId: "1:248605767535:web:e2d902828db3d25284da9a",
+            measurementId: "G-VP36MW16Z6" // Analytics ID, not used for Firestore directly
+        };
+
+        // This ensures the correct appId is used, especially in Canvas environments.
+        if (typeof __firebase_config !== 'undefined') {
+            try { firebaseConfig = JSON.parse(__firebase_config); } catch (e) { console.error("Canvas Firebase config parsing failed:", e); }
+        }
+        // Use projectId as appId if __app_id is not defined, for local consistency.
+        const appId = typeof __app_id !== 'undefined' ? __app_id : firebaseConfig.projectId || 'default-app-id';
+        
+        let auth, db;
+        let isFirebaseReady = false;
+        
+        async function setupFirebase() {
+            // Check if essential Firebase config details are provided (and not still placeholders or empty)
+            if (firebaseConfig && firebaseConfig.projectId && firebaseConfig.apiKey && firebaseConfig.apiKey.length > 10) { 
+                try {
+                    const app = initializeApp(firebaseConfig);
+                    db = getFirestore(app);
+                    auth = getAuth(app);
+                    
+                    // Wait for authentication state to be determined
+                    await new Promise((resolve) => {
+                        const unsubscribe = onAuthStateChanged(auth, async (user) => {
+                            if (user) {
+                                console.log("Firebase: User signed in with UID:", user.uid);
+                                isFirebaseReady = true;
+                            } else {
+                                console.log("Firebase: No user signed in. Attempting anonymous sign-in...");
+                                try {
+                                    // Use __initial_auth_token if available (from Canvas environment)
+                                    if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                                        await signInWithCustomToken(auth, __initial_auth_token);
+                                    } else {
+                                        // Otherwise, sign in anonymously for local testing
+                                        await signInAnonymously(auth);
+                                    }
+                                    if (auth.currentUser) {
+                                        console.log("Firebase: Signed in anonymously with UID:", auth.currentUser.uid);
+                                        isFirebaseReady = true;
+                                    }
+                                } catch (error) {
+                                    console.error("Firebase Auth Error during anonymous sign-in:", error);
+                                    showToast("Firebase Auth Error: Please check your Firebase API Key in index.html.", "error");
+                                }
+                            }
+                            unsubscribe(); // Unsubscribe after first auth state resolved
+                            resolve();
+                        });
+                    });
+                } catch (error) {
+                    console.error("Firebase initialization failed:", error);
+                    showToast("Error initializing Firebase. Contact form will not submit.", "error");
+                }
+            } else {
+                console.warn("Firebase initialization skipped: No valid configuration provided (or API Key is too short/default). Contact form submissions will NOT be saved.");
+                showToast("Firebase not configured. Contact form submissions will NOT be saved. Please update 'firebaseConfig' in index.html.", "warning");
+            }
+        }
+
+        async function handleContactFormSubmit(event) {
+            event.preventDefault();
+            const formMessage = document.getElementById('formMessage');
+            formMessage.textContent = 'Sending message...';
+            formMessage.classList.remove('text-green-500', 'text-red-500');
+            formMessage.classList.add('text-gray-600'); // Neutral color for sending
+
+            // Ensure Firebase is ready and user is authenticated
+            if (!isFirebaseReady || !auth || !auth.currentUser) { 
+                formMessage.textContent = 'Error: Database not ready or user not authenticated. Please ensure Firebase is set up correctly in index.html.';
+                formMessage.classList.remove('text-gray-600');
+                formMessage.classList.add('text-red-500');
+                showToast("Error sending message. Firebase not ready.", "error");
+                return;
+            }
+
+            try {
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const message = document.getElementById('message').value;
+
+                // Firestore path based on appId and public data rules
+                const collectionPath = `artifacts/${appId}/public/data/contacts`;
+                
+                await addDoc(collection(db, collectionPath), {
+                    name,
+                    email,
+                    message,
+                    timestamp: serverTimestamp(),
+                    userId: auth.currentUser.uid // Use the authenticated user's UID
+                });
+
+                formMessage.textContent = 'Message sent successfully! We will get back to you soon.';
+                formMessage.classList.remove('text-gray-600', 'text-red-500');
+                formMessage.classList.add('text-green-500');
+                document.getElementById('contactForm').reset();
+                showToast("Message sent successfully!", "success");
+
+            } catch (e) {
+                console.error("Error adding document to Firestore: ", e);
+                formMessage.textContent = 'Error sending message. Please try again.';
+                formMessage.classList.remove('text-gray-600', 'text-green-500');
+                formMessage.classList.add('text-red-500');
+                showToast("Error sending message. See console for error details.", "error");
+            }
+        }
+
+        // Initialize Firebase when the DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            setupFirebase();
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', handleContactFormSubmit);
+            }
+        });
+
+        // Toast Notification function
+        function showToast(message, type) {
+            const container = document.getElementById('toast-container');
+            if (!container) return;
+            const toast = document.createElement('div');
+            toast.className = `p-4 rounded-md shadow-lg text-white font-semibold transition-transform transform translate-x-full duration-300 ease-out ${type === 'success' ? 'bg-green-500' : type === 'warning' ? 'bg-yellow-500' : 'bg-red-500'}`;
+            toast.textContent = message;
+            container.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.classList.remove('translate-x-full');
+                toast.classList.add('translate-x-0');
+            }, 100);
+
+            setTimeout(() => {
+                toast.classList.remove('translate-x-0');
+                toast.classList.add('translate-x-full');
+                toast.addEventListener('transitionend', () => toast.remove());
+            }, 5000);
+        }
+    </script>
+
+    <script>
+        // --- Pre-loader ---
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                preloader.style.opacity = '0';
+                setTimeout(() => {
+                    preloader.classList.add('hidden');
+                }, 500);
+            }
+        });
+
+        // --- Theme Toggle ---
+        const themeToggle = document.getElementById('themeToggle');
+        const themeToggleMobile = document.getElementById('themeToggleMobile');
+        const html = document.documentElement;
+        
+        function toggleTheme() {
+            const newTheme = html.dataset.theme === 'dark' ? 'light' : 'dark';
+            html.dataset.theme = newTheme;
+
+            // Update icon
+            document.querySelectorAll('#themeToggle i, #themeToggleMobile i').forEach(icon => {
+                icon.classList.toggle('fa-sun', newTheme === 'light');
+                icon.classList.toggle('fa-moon', newTheme === 'dark');
+            });
+
+            // Update styles for dynamically added chat messages if they exist
+            document.querySelectorAll('#chat-window .message').forEach(messageDiv => {
+                if (messageDiv.classList.contains('ai-message')) {
+                    if (newTheme === 'light') {
+                        messageDiv.style.backgroundColor = 'var(--chat-bg-light)';
+                        messageDiv.style.color = 'var(--text-color-light)';
+                    } else {
+                        messageDiv.style.backgroundColor = 'var(--chat-bg-dark)';
+                        messageDiv.style.color = 'var(--text-color-dark)';
+                    }
+                }
+            });
+
+            // Re-add initial AI message to apply new theme classes if it's the only one
+            const chatWindow = document.getElementById('chat-window');
+            if (chatWindow && chatWindow.children.length === 1 && chatWindow.firstElementChild.classList.contains('ai-message') && chatWindow.firstElementChild.textContent.includes("Hello! I am your AI project estimator.")) {
+                chatWindow.firstElementChild.remove();
+                const newInitialAiMessage = document.createElement('div');
+                newInitialAiMessage.textContent = "Hello! I am your AI project estimator. Tell me about your dream website and I'll give you a cost estimate.";
+                newInitialAiMessage.className = 'message ai-message'; // Re-apply classes, which will now use updated CSS vars
+                chatWindow.prepend(newInitialAiMessage);
+            }
+        }
+        if (themeToggle) themeToggle.onclick = toggleTheme;
+        if (themeToggleMobile) themeToggleMobile.onclick = toggleTheme;
+
+        // --- Mobile Drawer ---
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const closeMenu = document.getElementById('closeMenu');
+
+        if (menuBtn) menuBtn.onclick = () => mobileMenu.classList.remove('translate-x-full');
+        if (closeMenu) closeMenu.onclick = () => mobileMenu.classList.add('translate-x-full');
+
+        document.querySelectorAll('.drawer-link').forEach(link =>
+            link.addEventListener('click', () => mobileMenu.classList.add('translate-x-full'))
+        );
+
+        // --- Smooth Scroll Active Links ---
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('section');
+        window.onscroll = () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - window.innerHeight / 3) {
+                    current = section.getAttribute('id');
+                }
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        };
+
+        // --- Typewriter ---
+        const phrases = ['We Design.', 'We Code.', 'We Innovate.', 'Your Digital Partner.'];
+        let i = 0, j = 0, currentPhrase = [], isDeleting = false, isEnd = false;
+
+        function loop() {
+            const typewriter = document.getElementById('typewriter');
+            if (!typewriter) return;
+
+            isEnd = false;
+            typewriter.innerHTML = currentPhrase.join('');
+
+            if (i < phrases.length) {
+                if (!isDeleting && j < phrases[i].length) {
+                    currentPhrase.push(phrases[i][j]);
+                    j++;
+                }
+
+                if (isDeleting && j >= 0) {
+                    currentPhrase.pop();
+                    j--;
+                }
+
+                if (j === phrases[i].length && !isDeleting) {
+                    isEnd = true;
+                    isDeleting = true;
+                }
+
+                if (isDeleting && j === 0) {
+                    currentPhrase = [];
+                    isDeleting = false;
+                    i++;
+                    if (i === phrases.length) i = 0;
+                }
+            }
+            const spedUp = Math.random() * (80 - 50) + 50;
+            const normalSpeed = Math.random() * (300 - 200) + 200;
+            const time = isEnd ? 2000 : isDeleting ? spedUp : normalSpeed;
+            setTimeout(loop, time);
+        }
+        loop();
+
+        // --- AOS Init ---
+        AOS.init({ once: true, duration: 700 });
+
+        // --- Counter Animation ---
+        const counters = document.querySelectorAll('.counter');
+        const speed = 2000; // Total time in milliseconds for the animation
+        const counterObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const updateCount = () => {
+                        const target = +counter.dataset.target;
+                        let currentCount = +counter.innerText;
+                        const increment = target / (speed / 16); // Increment per frame (approx 60fps)
+
+                        if (currentCount < target) {
+                            currentCount = Math.min(target, currentCount + increment); 
+                            counter.innerText = Math.ceil(currentCount);
+                            requestAnimationFrame(updateCount); // Use requestAnimationFrame for smoother animation
+                        } else {
+                            counter.innerText = target; 
+                        }
+                    };
+                    updateCount();
+                    counterObserver.unobserve(counter); // Stop observing once animated
+                }
+            });
+        }, { threshold: 0.5 }); // Trigger when 50% of the element is visible
+        counters.forEach(c => counterObserver.observe(c));
+
+        // --- Portfolio Filter ---
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+        filterBtns.forEach(btn =>
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('text-gold', 'font-bold'));
+                btn.classList.add('text-gold', 'font-bold');
+                const filter = btn.dataset.filter;
+                portfolioItems.forEach(item => {
+                    if (filter === 'all' || item.classList.contains(filter)) {
+                        item.classList.remove('hidden');
+                        item.classList.add('block'); // Ensure it's displayed as a block
+                    } else {
+                        item.classList.add('hidden');
+                        item.classList.remove('block');
+                    }
+                });
+            })
+        );
+        // Trigger 'All' filter on page load to show all items initially
+        document.querySelector('.filter-btn[data-filter="all"]').click();
+
+        // --- FAQ Accordion ---
+        document.querySelectorAll('.faq-toggle').forEach(toggle =>
+            toggle.addEventListener('click', () => {
+                const content = toggle.nextElementSibling;
+                const icon = toggle.querySelector('i');
+
+                // Close all other open FAQs
+                document.querySelectorAll('.faq-content').forEach(otherContent => {
+                    if (otherContent !== content && !otherContent.classList.contains('hidden')) {
+                        otherContent.classList.add('hidden');
+                        otherContent.previousElementSibling.querySelector('i').classList.remove('rotate-180');
+                    }
+                });
+
+                // Toggle the clicked FAQ
+                content.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
+            })
+        );
+
+        // --- Dynamic Year ---
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // --- Three.js Header Animation ---
+        const initHeaderAnimation = () => {
+            const canvas = document.getElementById('three-canvas-header');
+            if (!canvas) return;
+
+            const scene = new THREE.Scene();
+            // Use window.innerWidth/Height directly for the camera aspect
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+
+            // Set renderer's clear color with alpha to blend better
+            renderer.setClearColor(0x000000, 0); // Transparent background to blend with hero-bg
+
+            const colors = [new THREE.Color(0x2A61FF), new THREE.Color(0x8A2BE2), new THREE.Color(0xFF2A6D)];
+            const shapes = [];
+            const geometries = [
+                new THREE.TorusGeometry(5, 1.5, 16, 100), 
+                new THREE.BoxGeometry(8, 8, 8), 
+                new THREE.OctahedronGeometry(6), 
+                new THREE.SphereGeometry(4, 32, 32) 
+            ];
+
+            for (let i = 0; i < 30; i++) { 
+                const material = new THREE.MeshBasicMaterial({ color: colors[Math.floor(Math.random() * colors.length)], wireframe: true, transparent: true, opacity: 0.6 });
+                const geometry = geometries[Math.floor(Math.random() * geometries.length)];
+                const shape = new THREE.Mesh(geometry, material);
+                shape.position.set(
+                    (Math.random() - 0.5) * 100, 
+                    (Math.random() - 0.5) * 100,
+                    (Math.random() - 0.5) * 100
+                );
+                shape.rotation.set(
+                    Math.random() * Math.PI,
+                    Math.random() * Math.PI,
+                    Math.random() * Math.PI
+                );
+                shapes.push(shape);
+                scene.add(shape);
+            }
+
+            camera.position.z = 30; 
+
+            function animate() {
+                requestAnimationFrame(animate);
+                shapes.forEach(shape => {
+                    shape.rotation.x += 0.003; 
+                    shape.rotation.y += 0.003;
+                });
+                renderer.render(scene, camera);
+            }
+
+            window.addEventListener('resize', () => {
+                const width = window.innerWidth;
+                const height = window.innerHeight;
+                renderer.setSize(width, height);
+                camera.aspect = width / height;
+                camera.updateProjectionMatrix();
+            });
+
+            document.addEventListener('mousemove', (event) => {
+                const mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+                const mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+                camera.position.x = mouseX * 10; 
+                camera.position.y = mouseY * 10;
+                camera.lookAt(scene.position);
+            });
+            animate();
+        };
+
+        // --- Three.js Calculator Animation (Upwork-like particles) ---
+        const initCalculatorAnimation = () => {
+            const canvas = document.getElementById('three-canvas-calculator');
+            if (!canvas) return;
+
+            const scene = new THREE.Scene();
+            // Use canvas.clientWidth/Height for the camera aspect
+            const camera = new THREE.PerspectiveCamera(75, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true });
+            renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+
+            // Set renderer's clear color with alpha to blend better
+            renderer.setClearColor(0x000000, 0); // Transparent background
+
+            const particles = [];
+            const particleCount = 300; 
+            const geometry = new THREE.TetrahedronGeometry(0.5); 
+            const material = new THREE.MeshBasicMaterial({ color: 0x8A2BE2, wireframe: true, transparent: true, opacity: 0.7 }); 
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = new THREE.Mesh(geometry, material);
+                particle.position.set(
+                    (Math.random() - 0.5) * 60, 
+                    (Math.random() - 0.5) * 60,
+                    (Math.random() - 0.5) * 60
+                );
+                particle.velocity = new THREE.Vector3(
+                    (Math.random() - 0.5) * 0.1, 
+                    (Math.random() - 0.5) * 0.1,
+                    (Math.random() - 0.5) * 0.1
+                );
+                particles.push(particle);
+                scene.add(particle);
+            }
+
+            camera.position.z = 20; 
+
+            function animateCalculator() {
+                requestAnimationFrame(animateCalculator);
+                particles.forEach(p => {
+                    p.rotation.x += 0.03;
+                    p.rotation.y += 0.03;
+                    p.position.add(p.velocity);
+
+                    // Bounce off edges
+                    if (Math.abs(p.position.x) > 30) p.velocity.x *= -1;
+                    if (Math.abs(p.position.y) > 30) p.velocity.y *= -1;
+                    if (Math.abs(p.position.z) > 30) p.velocity.z *= -1;
+                });
+                renderer.render(scene, camera);
+            }
+
+            window.addEventListener('resize', () => {
+                const canvas = document.getElementById('three-canvas-calculator');
+                if (canvas) {
+                    renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+                    camera.aspect = canvas.clientWidth / canvas.clientHeight;
+                    camera.updateProjectionMatrix();
+                }
+            });
+            animateCalculator();
+        };
+
+ // --- AI Project Estimator Logic ---
+const initAIEstimator = () => {
+    const userInput = document.getElementById('userInput');
+    const sendBtn = document.getElementById('sendBtn');
+    const chatWindow = document.getElementById('chat-window');
+
+    if (!userInput || !sendBtn || !chatWindow) return;
+
+    let chatHistory = [];
+    
+    const loadingIndicator = document.createElement('div');
+    loadingIndicator.className = 'ai-message loading-message'; 
+    loadingIndicator.innerHTML = `
+        <div class="loading-dots">
+            <div class="loading-dot-item"></div>
+            <div class="loading-dot-item"></div>
+            <div class="loading-dot-item"></div>
+        </div>
+    `;
+
+    const initialAiMessage = document.createElement('div');
+    initialAiMessage.textContent = "Hello! I am your AI project estimator. Tell me about your dream website and I'll give you a cost estimate.";
+    initialAiMessage.className = 'message ai-message';
+    if (chatWindow.children.length === 0) {
+        chatWindow.appendChild(initialAiMessage);
+    }
+
+    async function sendMessage() {
+        const userText = userInput.value.trim();
+        if (userText === '') return;
+
+        const userMessageDiv = document.createElement('div');
+        userMessageDiv.textContent = userText;
+        userMessageDiv.className = 'message user-message';
+        chatWindow.appendChild(userMessageDiv);
+        
+        chatHistory.push({ role: "user", parts: [{ text: userText }] });
+
+        userInput.value = '';
+        chatWindow.appendChild(loadingIndicator);
+        chatWindow.scrollTop = chatWindow.scrollHeight;
+
+        try {
+            // Corrected Fetch call to your local backend server
+            const response = await fetch('http://localhost:3000/api/estimator', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ chatHistory: chatHistory })
+            });
+
+            if (!response.ok) {
+                throw new Error(`Server error: ${response.status} - ${response.statusText}`);
+            }
+
+            const result = await response.json();
+            const aiText = result.text;
+            
+            chatHistory.push({ role: "model", parts: [{ text: aiText }] });
+
+            const aiMessageDiv = document.createElement('div');
+            aiMessageDiv.textContent = aiText;
+            aiMessageDiv.className = 'message ai-message';
+
+            if (chatWindow.contains(loadingIndicator)) {
+                chatWindow.removeChild(loadingIndicator);
+            }
+            chatWindow.appendChild(aiMessageDiv);
+        } catch (error) {
+            console.error("Error from AI Estimator:", error);
+            if (chatWindow.contains(loadingIndicator)) {
+                chatWindow.removeChild(loadingIndicator);
+            }
+            const errorDiv = document.createElement('div');
+            errorDiv.textContent = "Sorry, the estimator is currently unavailable or encountered an error. Please try again later.";
+            errorDiv.className = 'message ai-message bg-red-500 text-white';
+            chatWindow.appendChild(errorDiv);
+        } finally {
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+        }
+    }
+
+    sendBtn.addEventListener('click', sendMessage);
+    userInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            sendMessage();
+        }
+    });
+};
+
+// Initialize all main components when the window loads
+window.onload = function() {
+    initHeaderAnimation();
+    initCalculatorAnimation();
+    initAIEstimator();
+    new Swiper(".mySwiper", {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        loop: true,
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+    });
+};
+    </script>
+</body>
+</html>
